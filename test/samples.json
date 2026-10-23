@@ -1,0 +1,576 @@
+[
+ {
+  "name": "en-slop",
+  "text": "Furthermore, in today's fast-paced landscape, it is crucial to leverage cutting-edge paradigms. Moreover, one might arguably say that the robust tapestry of seamless synergy could potentially unlock the potential of holistic, state-of-the-art solutions, and this comprehensive deep dive will meticulously unpack the multifaceted dynamics at play in a manner that is nothing short of revolutionary and truly game-changing for all stakeholders involved in this ever-evolving journey.",
+  "expected": {
+   "plainness": 39,
+   "grade": "slop",
+   "stats": {
+    "sentences": 2,
+    "words": 73,
+    "long_sentences": 1,
+    "buzzword_hits": 19,
+    "hedge_hits": 3,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 12.2
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"Furthermore\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"in today's fast-paced\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"landscape\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"crucial\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"leverage\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"cutting-edge\""
+    },
+    {
+     "line": 1,
+     "rule": "long-sentence",
+     "message": "Sentence has 59 words (limit 25)"
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"Moreover\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"robust\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"tapestry\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"seamless\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"synergy\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"unlock the potential\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"holistic\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"state-of-the-art\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"comprehensive\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"deep dive\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"meticulously\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"multifaceted\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"ever-evolving\""
+    },
+    {
+     "line": 1,
+     "rule": "hedge",
+     "message": "Hedge word: \"might\""
+    },
+    {
+     "line": 1,
+     "rule": "hedge",
+     "message": "Hedge word: \"arguably\""
+    },
+    {
+     "line": 1,
+     "rule": "hedge",
+     "message": "Hedge word: \"potentially\""
+    }
+   ]
+  }
+ },
+ {
+  "name": "en-plain",
+  "text": "The tool checks text and flags AI-sounding phrases. Paste your draft. It scores plainness from 0 to 100.",
+  "expected": {
+   "plainness": 100,
+   "grade": "plain",
+   "stats": {
+    "sentences": 3,
+    "words": 17,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 96.6
+   },
+   "findings": []
+  }
+ },
+ {
+  "name": "zh-slop",
+  "text": "说白了，这个方案能赋能业务，实现降本增效，打造技术底座，形成全生命周期闭环。这不是运气，而是实力——抓手要打通，对齐要拉通，沉淀要到位——未来可期。研究表明，成功的关键之一在于执行。",
+  "expected": {
+   "plainness": 54,
+   "grade": "slop",
+   "stats": {
+    "sentences": 3,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 11,
+    "zh_l2_hits": 1,
+    "zh_structure_hits": 4,
+    "reading_ease": 100.0
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "zh-closing",
+     "severity": "L1",
+     "message": "Cliché closing: \"未来可期\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"说白了\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"赋能\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"降本增效\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"技术底座\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"全生命周期\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"闭环\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"抓手\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"打通\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"对齐\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"拉通\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"沉淀\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l2",
+     "severity": "L2",
+     "message": "Risky word (L2, review): \"之一\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-not-but",
+     "severity": "L1",
+     "message": "Contrast cliché \"不是 A，而是 B\": \"这不是运气，而是…\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-translationese",
+     "severity": "L2",
+     "message": "Translationese: overused \"之一\"; judge or list directly"
+    },
+    {
+     "line": 1,
+     "rule": "zh-unsourced",
+     "severity": "L2",
+     "message": "Unsourced authority: \"研究表明\" (flag or cite, never invent)"
+    }
+   ]
+  }
+ },
+ {
+  "name": "zh-plain",
+  "text": "我拆了它的客户端，想看看实现。把纸箱拆包，把零件拆散重装。这笔账单已经结清，账号里还有余额。",
+  "expected": {
+   "plainness": 97,
+   "grade": "plain",
+   "stats": {
+    "sentences": 3,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 1,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 100.0
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"拆…\""
+    }
+   ]
+  }
+ },
+ {
+  "name": "mixed",
+  "text": "Furthermore, we need to leverage synergy. 说白了，这个闭环必须打通。The results are robust and comprehensive.",
+  "expected": {
+   "plainness": 66,
+   "grade": "needs polish",
+   "stats": {
+    "sentences": 3,
+    "words": 12,
+    "long_sentences": 0,
+    "buzzword_hits": 5,
+    "hedge_hits": 0,
+    "zh_l1_hits": 3,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 40.6
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"Furthermore\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"leverage\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"synergy\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"robust\""
+    },
+    {
+     "line": 1,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"comprehensive\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"说白了\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"闭环\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-l1",
+     "severity": "L1",
+     "message": "AI-flavor word (L1, must rewrite): \"打通\""
+    }
+   ]
+  }
+ },
+ {
+  "name": "empty",
+  "text": "",
+  "expected": {
+   "plainness": 100,
+   "grade": "plain",
+   "stats": {
+    "sentences": 0,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 100.0
+   },
+   "findings": []
+  }
+ },
+ {
+  "name": "code-fence",
+  "text": "Here is the code:\n```python\ndef leverage(x):\n    # furthermore, robust tapestry\n    return x\n```\nThat is all.",
+  "expected": {
+   "plainness": 100,
+   "grade": "plain",
+   "stats": {
+    "sentences": 1,
+    "words": 7,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 100.0
+   },
+   "findings": []
+  }
+ },
+ {
+  "name": "markdown",
+  "text": "# Title\n\n- Furthermore, leverage the robust paradigm.\n- Short one.\n\n> A quote about synergy.\n\nPlain tail.",
+  "expected": {
+   "plainness": 84,
+   "grade": "mostly plain",
+   "stats": {
+    "sentences": 5,
+    "words": 14,
+    "long_sentences": 0,
+    "buzzword_hits": 5,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 59.0
+   },
+   "findings": [
+    {
+     "line": 3,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"Furthermore\""
+    },
+    {
+     "line": 3,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"leverage\""
+    },
+    {
+     "line": 3,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"robust\""
+    },
+    {
+     "line": 3,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"paradigm\""
+    },
+    {
+     "line": 6,
+     "rule": "buzzword",
+     "message": "AI-tell buzzword: \"synergy\""
+    }
+   ]
+  }
+ },
+ {
+  "name": "zh-dechain",
+  "text": "这是关于项目管理的的讨论的的总结，涉及范围的的控制。",
+  "expected": {
+   "plainness": 100,
+   "grade": "plain",
+   "stats": {
+    "sentences": 1,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 100.0
+   },
+   "findings": []
+  }
+ },
+ {
+  "name": "zh-negopen",
+  "text": "不是我不努力，而是方法不对。没有捷径，而是要持续投入。",
+  "expected": {
+   "plainness": 85,
+   "grade": "mostly plain",
+   "stats": {
+    "sentences": 2,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 4,
+    "reading_ease": 100.0
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "zh-negation-opening",
+     "severity": "L2",
+     "message": "Negation opening (顿悟铺垫); state the point directly"
+    },
+    {
+     "line": 1,
+     "rule": "zh-negation-opening",
+     "severity": "L2",
+     "message": "Negation opening (顿悟铺垫); state the point directly"
+    },
+    {
+     "line": 1,
+     "rule": "zh-not-but",
+     "severity": "L1",
+     "message": "Contrast cliché \"不是 A，而是 B\": \"不是我不努力，而是…\""
+    },
+    {
+     "line": 1,
+     "rule": "zh-not-but",
+     "severity": "L1",
+     "message": "Contrast cliché \"不是 A，而是 B\": \"没有捷径，而是…\""
+    }
+   ]
+  }
+ },
+ {
+  "name": "zh-long",
+  "text": "这个为了应对当前复杂多变的市场环境而制定出来的综合性战略规划方案，经过了多个部门长达数月的反复讨论和修改，终于在昨天正式对外发布了。",
+  "expected": {
+   "plainness": 96,
+   "grade": "plain",
+   "stats": {
+    "sentences": 1,
+    "words": 0,
+    "long_sentences": 1,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 0,
+    "reading_ease": 100.0
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "long-sentence",
+     "message": "Sentence has 32 effective words (limit 25)"
+    }
+   ]
+  }
+ },
+ {
+  "name": "zh-unsourced",
+  "text": "数据显示，八成用户更喜欢短句。有评论认为，长句正在消失。",
+  "expected": {
+   "plainness": 90,
+   "grade": "plain",
+   "stats": {
+    "sentences": 2,
+    "words": 0,
+    "long_sentences": 0,
+    "buzzword_hits": 0,
+    "hedge_hits": 0,
+    "zh_l1_hits": 0,
+    "zh_l2_hits": 0,
+    "zh_structure_hits": 2,
+    "reading_ease": 100.0
+   },
+   "findings": [
+    {
+     "line": 1,
+     "rule": "zh-unsourced",
+     "severity": "L2",
+     "message": "Unsourced authority: \"数据显示\" (flag or cite, never invent)"
+    },
+    {
+     "line": 1,
+     "rule": "zh-unsourced",
+     "severity": "L2",
+     "message": "Unsourced authority: \"有评论认为\" (flag or cite, never invent)"
+    }
+   ]
+  }
+ }
+]
