@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>slop-lint — paste text, see the AI slop score</title>
+<meta name="description" content="Bilingual (EN/ZH) readability linter: scores AI-generated text on plainness and flags AI-register slop. Runs 100% in your browser.">
+<style>
+  :root { --bg:#0f1115; --panel:#171a21; --ink:#e8eaf0; --dim:#9aa0b4;
+          --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --accent:#7dd3fc; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { max-width:860px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  h1 .dot { color:var(--accent); }
+  .sub { color:var(--dim); margin:0 0 20px; }
+  textarea { width:100%; min-height:220px; resize:vertical; background:var(--panel);
+             color:var(--ink); border:1px solid #2a2f3d; border-radius:10px;
+             padding:14px; font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  textarea:focus { outline:none; border-color:var(--accent); }
+  .row { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 20px; align-items:center; }
+  button { background:#232837; color:var(--ink); border:1px solid #2a2f3d; border-radius:8px;
+           padding:8px 14px; cursor:pointer; font-size:14px; }
+  button:hover { border-color:var(--accent); }
+  button.primary { background:var(--accent); color:#0b1220; border-color:var(--accent); font-weight:600; }
+  .score-card { display:none; background:var(--panel); border:1px solid #2a2f3d;
+                border-radius:12px; padding:20px; margin-bottom:16px; }
+  .score-top { display:flex; align-items:baseline; gap:12px; }
+  .score-num { font-size:52px; font-weight:800; line-height:1; }
+  .grade { font-size:18px; font-weight:600; }
+  .g-plain { color:var(--ok); } .g-mostly { color:var(--accent); }
+  .g-polish { color:var(--warn); } .g-slop { color:var(--bad); }
+  .stats { color:var(--dim); font-size:13px; margin-top:6px; }
+  .finding { border-top:1px solid #232837; padding:10px 0; font-size:14px; }
+  .finding .ln { color:var(--dim); font-family:ui-monospace,monospace; font-size:12px;
+                 display:inline-block; width:64px; }
+  .badge { display:inline-block; font-size:11px; font-weight:700; border-radius:6px;
+           padding:2px 8px; margin-right:8px; }
+  .b-L1 { background:#3a1d1d; color:var(--bad); }
+  .b-L2 { background:#3a2f14; color:var(--warn); }
+  .b-info { background:#1d2a3a; color:var(--accent); }
+  .finding .msg { color:var(--ink); }
+  .none { color:var(--ok); padding:12px 0 4px; }
+  footer { margin-top:36px; color:var(--dim); font-size:13px; }
+  footer a { color:var(--accent); }
+  .err { color:var(--bad); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>slop-lint<span class="dot">.</span></h1>
+  <p class="sub">Paste AI-generated text, get a plainness score. Bilingual EN/ZH.
+     100% in-browser — your text never leaves this page.</p>
+
+  <textarea id="input" placeholder="Paste your draft here…  在这里粘贴文本"></textarea>
+  <div class="row">
+    <button class="primary" id="go">Analyze</button>
+    <button data-sample="en">Try AI slop (EN)</button>
+    <button data-sample="zh">试试 AI 腔 (ZH)</button>
+    <button data-sample="clean">Try clean text</button>
+    <span class="stats" id="hint"></span>
+  </div>
+
+  <div class="score-card" id="card">
+    <div class="score-top">
+      <span class="score-num" id="score">–</span>
+      <span class="grade" id="grade"></span>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div id="findings"></div>
+  </div>
+
+  <footer>
+    Same engine as the <a href="https://github.com/hahahahahahahahah6/slop-lint">slop-lint CLI</a>
+    (<a href="https://pypi.org/project/slop-lint/">PyPI</a>) · MIT ·
+    rules auto-extracted from the Python source, parity-tested.
+  </footer>
+</div>
+
+<script src="slop.js"></script>
+<script>
+const SAMPLES = {
+  en: "Furthermore, in today's fast-paced landscape, it is crucial to leverage cutting-edge paradigms. " +
+      "Moreover, one might arguably say that the robust tapestry of seamless synergy could potentially " +
+      "unlock the potential of holistic, state-of-the-art solutions.",
+  zh: "说白了，这个方案能赋能业务，实现降本增效，打造技术底座，形成全生命周期闭环。" +
+      "这不是运气，而是实力——抓手要打通，对齐要拉通——未来可期。研究表明，成功的关键之一在于执行。",
+  clean: "The tool checks text and flags AI-sounding phrases. Paste your draft. It scores plainness from 0 to 100."
+};
+
+let analyze = null;
+fetch("rules.json")
+  .then((r) => { if (!r.ok) throw new Error("rules.json not found"); return r.json(); })
+  .then((rules) => { analyze = window.slopLint.makeEngine(rules).analyze; run(); })
+  .catch((e) => { document.getElementById("hint").innerHTML = '<span class="err">Failed to load rules: ' + e.message + "</span>"; });
+
+const input = document.getElementById("input");
+const card = document.getElementById("card");
+let timer = null;
+input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(run, 350); });
+document.getElementById("go").addEventListener("click", run);
+document.querySelectorAll("[data-sample]").forEach((b) =>
+  b.addEventListener("click", () => { input.value = SAMPLES[b.dataset.sample]; run(); }));
+
+const GRADE_CLASS = { "plain": "g-plain", "mostly plain": "g-mostly", "needs polish": "g-polish", "slop": "g-slop" };
+
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function run() {
+  if (!analyze) return;
+  const text = input.value;
+  card.style.display = "block";
+  if (!text.trim()) {
+    document.getElementById("score").textContent = "–";
+    document.getElementById("grade").textContent = "";
+    document.getElementById("stats").textContent = "Paste some text to get a score.";
+    document.getElementById("findings").innerHTML = "";
+    return;
+  }
+  const r = analyze(text);
+  const s = r.stats;
+  document.getElementById("score").textContent = r.plainness;
+  const gradeEl = document.getElementById("grade");
+  gradeEl.textContent = r.grade;
+  gradeEl.className = "grade " + (GRADE_CLASS[r.grade] || "");
+  const zhBit = (s.zh_l1_hits || s.zh_l2_hits || s.zh_structure_hits)
+    ? ` · ZH L1 ${s.zh_l1_hits} / L2 ${s.zh_l2_hits} / structure ${s.zh_structure_hits}` : "";
+  document.getElementById("stats").textContent =
+    `${s.sentences} sentences · ${s.words} words · reading ease ${s.reading_ease}` +
+    ` · long ${s.long_sentences} · buzzwords ${s.buzzword_hits} · hedges ${s.hedge_hits}${zhBit}`;
+  const box = document.getElementById("findings");
+  if (!r.findings.length) {
+    box.innerHTML = '<div class="none">No findings. Nice and plain.</div>';
+    return;
+  }
+  box.innerHTML = r.findings.map((f) => {
+    const badge = f.severity
+      ? `<span class="badge b-${f.severity}">${esc(f.severity)}</span>`
+      : `<span class="badge b-info">style</span>`;
+    return `<div class="finding"><span class="ln">L${f.line}</span>${badge}` +
+           `<span class="msg">${esc(f.message)}</span></div>`;
+  }).join("");
+}
+</script>
+</body>
+</html>
